@@ -1,5 +1,6 @@
 # Blinx-Chrome-Devtool
 Steps to use:
+------------
 1. Goto chrome://extensions 
 2. Make sure 'developer mode' is checked
 3. Click 'Load Unpacked Extension'
