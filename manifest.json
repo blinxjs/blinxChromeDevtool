@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+
+  "name": "Blinx Devtool",
+  "description": "Chrome Devtools Extension for Blinx",
+  "devtools_page": "TrussExt.html",
+  "version": "0.5",
+  // "browser_action": {
+  //   "default_popup": "popup.html"
+  // },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [{
+    "matches":["http://*/*","https://*/*"],
+    "js":["contentScript.js"]
+  }],
+  "permissions": [
+  //  "experimental",
+    "tabs",
+    "http://*/*",
+    "https://*/*"
+  ]
+}

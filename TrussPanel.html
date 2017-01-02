@@ -1,0 +1,237 @@
+<html>
+<head>
+
+    <style type="text/css">
+        /* Style the buttons that are used to open and close the accordion panel */
+      button.accordion {
+          background-color: #eee;
+          color: #444;
+          cursor: pointer;
+          padding: 16px;
+          width: 85%;
+          text-align: left;
+          border: none;
+          outline: none;
+          text-align: left;
+          font-size: medium;
+          margin-left: 110px;
+      }
+
+      /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+      button.accordion.active, button.accordion:hover {
+          background-color: #ddd;
+      }
+
+      .collapse-icon{
+          width: 20px;
+          height: 18px;
+          display: block;
+          position: absolute;
+          left: -1.7em;
+          top: -0.2em;
+          z-index: 5;
+          background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAD1JREFUeNpiYGBgOADE%2F3Hgw0DM4IRHgSsDFOzFInmMAQnY49ONzZRjDFiADT7dMLALiE8y4AGW6LoBAgwAuIkf%2F%2FB7O9sAAAAASUVORK5CYII%3D");
+          background-repeat: no-repeat;
+          background-position: center center;
+          opacity: 0.5;
+          cursor: pointer;
+      }
+
+      /* Style the accordion panel. Note: hidden by default */
+      div.panel {
+          padding: 0 18px;
+          background-color: white;
+          display: none;
+      }
+
+      /* The "show" class is added to the accordion panel when the user clicks on one of the buttons. This will show the panel content */
+      div.panel.show {
+          display: block;
+      }
+
+      #headerText{
+          padding-top: 8px;
+          padding-left: 20px;
+          color: white;
+      }
+
+      #pageHeader{
+          background: #027CD5;
+          width: 100%;
+          height: 40px;
+      }
+
+      #actionBar{
+          height: 50px;
+      }
+
+      #refreshBtn{
+          height: 34px;  
+          width: 90px;
+          margin-top: 8px;
+          cursor: pointer;    
+          margin-left: 8px;
+          font-weight: bold;
+          color: white;    
+          border-color: #ffd824;
+          color: #333333;
+          background-color: #ffd824;
+      }
+      #refreshBtn:hover{
+          text-decoration-color: blue;
+      }
+
+      #logDiv{
+          float: right;
+          width: 87%;
+          border: 1px solid #eeeeee;
+          height: 30px;
+          margin-top: 10px;
+          line-height: 5px;
+          text-align: center;
+      }
+
+      #logText{
+          padding-left: 10px;
+      }
+
+      #sidebarText{
+        text-align: center;
+        font-size: large;
+        font-family: monospace;
+        color: gray;
+      }
+      
+      #main{
+        width: 68%;
+        float: left;
+      }
+
+      #sidebar{
+        width: 31%;
+        float: right;
+        height: 100%;
+        border-left: 4px solid #eeeeee;
+      }
+
+      #sidebarText{
+        text-align: left;
+        font-size: medium;
+        font-family: monospace;
+        padding: 8px 8px 8px 8px;
+      }
+
+      #moduleInfo{
+        margin-top: 20px;
+      }
+
+      #sidebarHeader{
+        padding: 8px 8px;
+        font-family: monospace;
+        font-size: medium;
+      }
+
+
+.json-view {
+    position: relative;
+}
+
+.json-view .collapser {
+    width: 20px;
+    height: 18px;
+    display: block;
+    position: absolute;
+    left: -1.7em;
+    top: -0.2em;
+    z-index: 5;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAD1JREFUeNpiYGBgOADE%2F3Hgw0DM4IRHgSsDFOzFInmMAQnY49ONzZRjDFiADT7dMLALiE8y4AGW6LoBAgwAuIkf%2F%2FB7O9sAAAAASUVORK5CYII%3D");
+    background-repeat: no-repeat;
+    background-position: center center;
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.json-view .collapsed {
+    -ms-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -khtml-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
+.json-view .bl {
+    display: block;
+    padding-left: 20px;
+    margin-left: -20px;
+    position: relative;    
+}
+
+.json-view {
+    font-family: monospace;
+}
+
+.json-view ul {
+    list-style-type: none;
+    padding-left: 2em;
+    border-left: 1px dotted;
+    margin: 0.3em;
+}
+
+.json-view ul li {
+    position: relative;
+}
+
+.json-view .dots,
+.json-view .comments {
+    display: none;
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    -khtml-user-select: none; 
+    -webkit-user-select: none; 
+    -o-user-select: none;     
+    user-select: none;
+}
+
+.json-view .comments {
+    padding-left: 0.8em;
+    font-style: italic;
+    color: #888;
+}
+
+.json-view .null,
+.json-view .num,
+.json-view .bool,
+.json-view .undef {
+    font-weight: bold;
+    color: #1A01CC;
+}
+
+.json-view .str {
+    color: #800;
+}
+
+
+    </style>
+</head>
+
+<body>
+    <div id="pageHeader">
+      <h2 id="headerText">Blinx Devtool</h2>
+    </div>
+    <div id="main">
+      <div id="actionBar">
+        <button id="refreshBtn">Get modules</button> 
+        <div id="logDiv">
+          <p id="logText">Click Get Modules to check for available Blinx Modules in page</p>
+        </div>
+      </div>
+      <div id="moduleInfo"></div>
+    </div>
+    <div id="sidebar">
+          <div id="sidebarHeader"></div> 
+          <div id="sidebarText">Click a Module to View its Config</div>
+    </div>
+
+  
+</body>
