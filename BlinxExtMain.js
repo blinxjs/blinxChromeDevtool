@@ -1,8 +1,9 @@
 var panelElement;
+var trussPanel;
 var moduleObj;
 var allModuleInstances;
 
-//need to seperate listeners from this
+//need to seperate listeners from this file
 var REQ_IDS = {
     INIT: 0,
     SEND_LOG_TO_PANEL: 1,
@@ -35,7 +36,7 @@ var createTrussPanel = new function(){
     // console.log("creating blinx panel");
     chrome.devtools.panels.create(
     "Blinx",'',
-    "BlinxPanel.html",                
+    "TrussPanel.html",                
     function(panel) {
         panel.onShown.addListener(function tempFunc(panel_window){
         
